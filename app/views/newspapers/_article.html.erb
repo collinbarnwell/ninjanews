@@ -1,0 +1,8 @@
+<li>
+  <h3><%= link_to article.title, article.url %></h3>
+  <p><%= article.content %></p>
+  <small>
+    <%= article.source.name %>
+    <%= time_ago_in_words article.created_at %>
+  </small>
+</li>
