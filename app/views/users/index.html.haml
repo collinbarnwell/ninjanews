@@ -1,0 +1,4 @@
+%h1 Users
+%ol
+  -@users.each do |user|
+    %li= link_to user.name, user_path(user)

@@ -4,9 +4,7 @@ class CreateArticles < ActiveRecord::Migration
       t.string :title
       t.string :image
       t.string :content
-      t.string :source
       t.string :url
-      t.string :section
 
       t.timestamps
     end

@@ -2,6 +2,11 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.0.0.rc2'
 gem 'bootstrap-sass'
+gem 'haml'
+gem 'haml-rails', require: false
+gem 'formtastic', '~> 2.3.0.rc2'
+gem 'i18n'
+gem 'devise'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -10,7 +15,7 @@ gem 'sqlite3'
 
 # gem 'sidekiq'
 
-gem 'whenever', require: false
+# gem 'whenever', require: false
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -25,6 +30,20 @@ gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.1'
+
+group :development do
+  gem 'annotate', '2.4.0' # annotate --position before
+end
+
+group :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'capybara', '2.0.3'
+  gem 'launchy'
+end 
+
+gem 'activeadmin', github: 'gregbell/active_admin'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

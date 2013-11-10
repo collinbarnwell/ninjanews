@@ -1,19 +1,15 @@
 Ninjanews::Application.routes.draw do
   
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   root to: 'static_pages#home'
 
-  resources :users do
-    resources :newspapers
-  end
-  resources :articles, only: [:index, :show]
+  resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
   match '/signup', to: 'users#new', via: 'get'
   match '/signin', to: 'sessions#new', via: 'get'
-  match '/signout', to: 'sessions#destroy', via: 'delete'
-
-  get 'sources/:id', to: 'sources#show'
-  
+  match '/signout', to: 'sessions#destroy', via: 'delete'  
 
 
   # The priority is based upon order of creation:

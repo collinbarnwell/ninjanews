@@ -1,7 +1,5 @@
 class Source < ActiveRecord::Base
-  # attr_accessible :area, :name, :url
-  
-  validates_presence_of :name, :url
+  validates :name, :url, presence: true
 
   has_many :feeds
   has_many :articles. through: :feeds
