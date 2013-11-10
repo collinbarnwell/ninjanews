@@ -62,6 +62,11 @@ ActiveRecord::Schema.define(version: 20131110054216) do
     t.integer  "feed_id"
   end
 
+  create_table "articles_newspapers", id: false, force: true do |t|
+    t.integer "newspaper_id"
+    t.integer "article_id"
+  end
+
   create_table "feed_scores", force: true do |t|
     t.integer  "feed_id"
     t.integer  "user_id"
@@ -90,6 +95,13 @@ ActiveRecord::Schema.define(version: 20131110054216) do
 
   create_table "interest_questions", force: true do |t|
     t.text     "question_text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "newspapers", force: true do |t|
+    t.string   "title"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

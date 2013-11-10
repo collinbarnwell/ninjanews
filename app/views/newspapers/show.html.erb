@@ -1,8 +1,0 @@
-<% provide :title, @newspaper.title %>
-
-<h1><%= @newspaper.title.titleize %></h1>
-<h4>(compiled <%= time_ago_in_words @newspaper.created_at %> ago)</h4>
-
-<ul>
-  <%= render @articles %>
-</ul>

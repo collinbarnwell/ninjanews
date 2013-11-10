@@ -6,7 +6,6 @@ gem 'haml'
 gem 'haml-rails', require: false
 gem 'formtastic', '~> 2.3.0.rc2'
 gem 'i18n'
-gem 'devise'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
