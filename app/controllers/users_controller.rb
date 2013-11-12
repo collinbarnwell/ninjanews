@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     @interest_questions = InterestQuestion.all
     score_all_feeds(@user)
     if @user.save
-      sign_in @user
+      sign_in_ @user
       redirect_to @user, notice: 'Welcome!'
     else
       render action: 'new'

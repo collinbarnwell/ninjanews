@@ -1,8 +1,8 @@
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: 2409e0b54f634f86fc46f9ebf9647ac363810081
+  revision: 329dda82e58a71b8e87546b10e089366a79aa4ef
   specs:
-    activeadmin (0.6.1)
+    activeadmin (1.0.0.pre)
       arbre (~> 1.0)
       bourbon
       coffee-rails
@@ -47,8 +47,8 @@ GEM
     annotate (2.4.0)
     arbre (1.0.1)
       activesupport (>= 3.0.0)
-    arel (4.0.0)
-    atomic (1.1.13)
+    arel (4.0.1)
+    atomic (1.1.14)
     bcrypt-ruby (3.0.1)
     bootstrap-sass (2.3.2.1)
       sass (~> 3.2)
@@ -72,7 +72,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
-    devise (3.1.1)
+    devise (3.2.0)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
@@ -80,7 +80,7 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.2.4)
     erubis (2.7.0)
-    execjs (2.0.0)
+    execjs (2.0.2)
     factory_girl (4.2.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.2.1)
@@ -107,7 +107,7 @@ GEM
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-    jquery-ui-rails (4.0.5)
+    jquery-ui-rails (4.1.0)
       railties (>= 3.1.0)
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
@@ -117,10 +117,10 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    mime-types (1.24)
+    mime-types (1.25)
     mini_portile (0.5.1)
     minitest (4.7.5)
-    multi_json (1.7.9)
+    multi_json (1.8.2)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     orm_adapter (0.4.0)
@@ -144,7 +144,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.1.0)
-    ransack (1.0.0)
+    ransack (1.1.0)
       actionpack (>= 3.0)
       activerecord (>= 3.0)
       polyamorous (~> 0.6.0)
@@ -166,7 +166,7 @@ GEM
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
     rubyzip (0.9.9)
-    sass (3.2.10)
+    sass (3.2.12)
     sass-rails (4.0.0)
       railties (>= 4.0.0.beta, < 5.0)
       sass (>= 3.1.10)
@@ -181,19 +181,19 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.0.0)
+    sprockets-rails (2.0.1)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
     sqlite3 (1.3.8)
     thor (0.18.1)
-    thread_safe (0.1.2)
+    thread_safe (0.1.3)
       atomic
     tilt (1.4.1)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.37)
+    tzinfo (0.3.38)
     uglifier (2.1.2)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
@@ -212,6 +212,7 @@ DEPENDENCIES
   bcrypt-ruby (~> 3.0.1)
   bootstrap-sass
   capybara (= 2.0.3)
+  coffee-script
   factory_girl_rails
   formtastic (~> 2.3.0.rc2)
   haml

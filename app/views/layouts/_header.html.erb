@@ -2,13 +2,13 @@
   <div id='header'>
   	<ul class='nav pull-left'>
   		<li>
-        <%= link_to 'NINJA|news', root_path %>
+        <%= link_to 'NINJANEWS', root_path %>
       </li>
   	</ul>
   	<ul class='nav pull-right'>
       <% if signed_in? %>
         <li>
-          <%= link_to current_user.name.capitalize, user_path(current_user) %>
+          <%= link_to current_user.name.titleize, user_path(current_user) %>
         </li>
         <li>
           <%= link_to 'Sign out', signout_path, method: 'delete' %> 

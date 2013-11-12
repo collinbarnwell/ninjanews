@@ -25,13 +25,13 @@ describe Article do
     context 'with a read article' do
       it 'should return that article' do
         create :article_read, article: @article, user: @user
-        Article.read_by(@user).all.first.should == @article
+        Article.read_by(@user).first.should == @article
       end
     end
 
     context 'with an article that has not been read' do
       it 'should return no articles' do
-        Article.read_by(@user).all.first.should_not == @article
+        Article.read_by(@user).first.should_not == @article
       end
     end
   end
@@ -44,14 +44,14 @@ describe Article do
 
     context 'with no read articles' do
       it 'should return article' do
-        Article.not_read_by(@user).all.first.should == @article
+        Article.not_read_by(@user).first.should == @article
       end
     end
 
     context 'with a read article' do
       it 'should return no articles' do
         create :article_read, article: @article, user: @user
-        Article.not_read_by(@user).all.first.should_not == @article
+        Article.not_read_by(@user).first.should_not == @article
       end
     end
   end

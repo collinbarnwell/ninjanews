@@ -43,6 +43,7 @@ group :test do
 end 
 
 gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'coffee-script'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
