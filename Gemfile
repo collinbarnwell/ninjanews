@@ -40,7 +40,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'capybara', '2.0.3'
   gem 'launchy'
-end 
+end
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

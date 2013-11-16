@@ -1,0 +1,18 @@
+.form
+  =semantic_form_for(@source) do |f|
+    -if @source.errors.any?
+      #error_explaination
+        %h2
+          =pluralize(@source.errors.count, 'error')
+        %ul
+          =@source.errors.full_messages.each do |msg|
+            %li=msg
+
+    =f.inputs do
+      =f.input :title
+      =f.input :url
+      =f.input :area
+
+    =f.actions do
+      =f.action :submit
+      =f.action :cancel

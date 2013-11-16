@@ -1,0 +1,7 @@
+-if current_user.is_admin
+  -provide :title, 'New Source'
+  %h1 New Source
+
+  =render 'form'
+-else
+  %h1 ACCESS DENIED

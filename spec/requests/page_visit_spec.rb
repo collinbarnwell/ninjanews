@@ -23,7 +23,6 @@ describe 'basic pages' do
       fill_in 'Name', with: user.name
       fill_in 'Email', with: user.email
       fill_in 'user_password', with: user.password
-      save_and_open_page
       fill_in 'Zipcode', with: user.zipcode
       fill_in 'user_password_confirmation', with: user.password
       click_button 'Create'

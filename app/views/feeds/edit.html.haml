@@ -1,0 +1,8 @@
+-if current_user.is_admin
+  -provide :title, 'Edit Feed'
+  %h1 Edit Feed
+
+  =render 'form'
+
+-else
+  %h1 ACCESS DENIED

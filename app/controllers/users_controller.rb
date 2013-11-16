@@ -19,8 +19,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    @interest_questions = InterestQuestion.all
+    @user = User.new(params[:user])
+    @user.name.downcase!
+    @user.email.downcase!
     score_all_feeds(@user)
     if @user.save
       sign_in_ @user
@@ -32,13 +33,11 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    respond_to do |format|
-      if @user.update_attributes(user_params)
-        redirect_to @user, notice: 'User updated.'
-        score_all_feeds(@user)
-      else
-        render action: 'edit' 
-      end
+    if @user.update_attributes(user_params)
+      redirect_to @user, notice: 'User updated.'
+      score_all_feeds(@user)
+    else
+      render action: 'edit' 
     end
   end
 
@@ -50,6 +49,7 @@ class UsersController < ApplicationController
   private
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation, :zipcode)
+      params.require(:interest_answer).permit!
     end
 
     def score_all_feeds(user)

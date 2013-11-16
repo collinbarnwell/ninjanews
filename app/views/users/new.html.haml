@@ -2,30 +2,4 @@
 
 %h1 New user
 
-%p#form
-  =semantic_form_for(@user) do |f|
-    -if @user.errors.any?
-      #error_explanation
-        %h2
-          = pluralize(@user.errors.count, 'error')
-        %ul
-          -@user.errors.full_messages.each do |msg|
-            %li= msg
-
-    =f.inputs do
-      =f.input :name
-      =f.input :email
-      =f.input :zipcode, as: :string, hint: I18n.t('forms.zipcode_hint')
-
-      =f.input :password
-      =f.input :password_confirmation
-
-      -@interest_questions.each do |q|
-        =f.semantic_fields_for :interest_answer do |ia|
-          =ia.input :interest_rating, label: q.question_text, as: :range, 
-                    max: 100, min: 0, default: 50
-          -ia.input :interest_question_id, as: :hidden, value: q.id
-
-    =f.actions do
-      =f.action :submit
-      =f.action :cancel
+=render 'form'

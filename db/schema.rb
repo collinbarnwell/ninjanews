@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131110054216) do
+ActiveRecord::Schema.define(version: 20131116053706) do
 
   create_table "article_reads", force: true do |t|
     t.integer "user_id"
@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 20131110054216) do
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "source_id"
     t.integer  "feed_id"
   end
 
@@ -101,6 +100,7 @@ ActiveRecord::Schema.define(version: 20131110054216) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "remember_token"
+    t.boolean  "is_admin",              default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -13,6 +13,7 @@
 #  created_at            :datetime
 #  updated_at            :datetime
 #  remember_token        :string(255)
+#  is_admin              :boolean         default(FALSE)
 #
 
 class User < ActiveRecord::Base

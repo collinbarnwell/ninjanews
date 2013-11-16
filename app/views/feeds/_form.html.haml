@@ -1,0 +1,20 @@
+.form
+  =semantic_form_for(@feed) do |f|
+    -if @feed.errors.any?
+      #error_explaination
+        %h2
+          =pluralize(@feed.errors.count, 'error')
+        %ul
+          =@feed.errors.full_messages.each do |msg|
+            %li=msg
+            
+    =f.inputs do
+      =f.input :url
+      =f.input :source_id, as: :select, collection: @sources, include_blank: true, label_method: :title
+      =f.input :section
+      =f.input :area_importance
+      =f.input :is_local_news
+
+    =f.actions do
+      =f.action :submit
+      =f.action :cancel

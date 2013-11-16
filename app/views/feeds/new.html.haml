@@ -1,0 +1,8 @@
+-if current_user.is_admin
+  -provide :title, 'New Feed'
+  %h1 New Feed
+
+  =render 'form'
+
+-else
+  %h1 ACCESS DENIED
