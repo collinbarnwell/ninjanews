@@ -2,8 +2,8 @@ Ninjanews::Application.routes.draw do
   
   root to: 'static_pages#home'
 
-  resources :users
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :users, except: :new
+  resources :sessions, only: [:create, :destroy]
 
   get '/signup', to: 'users#new'
   get '/signin', to: 'sessions#new'
@@ -11,10 +11,8 @@ Ninjanews::Application.routes.draw do
 
   # admin only
   
-  get '/admin/dashboard', to: 'admin#dashboard' 
-  get '/admin/interest', to: 'admin#interest' 
-  resources :feeds, except: :show
-  resources :sources, except: [:show, :index]
+  resources :feeds, :sources, :interest_questions
+  # note: should remove :show action
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

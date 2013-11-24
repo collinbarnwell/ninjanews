@@ -1,0 +1,17 @@
+-if current_user.is_admin
+  -provide :title, 'All Sources'
+  %h1 All Sources
+  %p= link_to 'New Source', new_source_path
+  %ul
+    -@sources.each do |source|
+      %li
+        %h4
+          = source.title
+          =', '
+          = link_to source.url, source.url
+          = "----"
+          = link_to 'Edit', edit_source_path(source)
+          = "----"
+          = link_to 'Delete', source_path(source), method: 'delete'
+-else
+  %h1 ACCESS DENIED

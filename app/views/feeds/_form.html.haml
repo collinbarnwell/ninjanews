@@ -5,7 +5,7 @@
         %h2
           =pluralize(@feed.errors.count, 'error')
         %ul
-          =@feed.errors.full_messages.each do |msg|
+          -@feed.errors.full_messages.each do |msg|
             %li=msg
             
     =f.inputs do
@@ -14,6 +14,12 @@
       =f.input :section
       =f.input :area_importance
       =f.input :is_local_news
+
+      -@interest_questions.each do |iq|
+        =f.semantic_fields_for :relation_level do |rl|
+          =rl.input :score, label: iq.question_text, as: :range, 
+                    max: 100, min: 0, default: 0
+          -rl.input :interest_question_id, as: :hidden, value: iq.id
 
     =f.actions do
       =f.action :submit

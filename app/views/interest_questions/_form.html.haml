@@ -1,0 +1,14 @@
+.form
+  =semantic_form_for(@interest_question) do |f|
+    -if @interest_question.errors.any?
+      #error_explaination
+        %h2
+          =pluralize(@interest_question.errors.count, 'error')
+        %ul
+          -@interest_question.errors.full_messages.each do |msg|
+            %li=msg
+    =f.inputs do
+      =f.input :question_text, as: :text
+    =f.actions do
+      =f.action :submit
+      =f.action :cancel

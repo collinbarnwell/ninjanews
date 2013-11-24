@@ -1,5 +1,5 @@
 - unless flash.empty?
-  = flash.each do |name, msg|
-    = if msg.is_a?(String)
+  - flash.each do |name, msg|
+    - if msg.is_a?(String)
       %div.alert{ class: "alert-#{name==:notice ? 'success' : 'error'}" }
         =content_tag :div, msg, :id => "flash_#{name}"

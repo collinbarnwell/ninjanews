@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    score_all_feeds(@user)
     @articles = get_user_articles.limit(50)
   end
 
@@ -19,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
+    @user = User.new(user_params)
     @user.name.downcase!
     @user.email.downcase!
     score_all_feeds(@user)
@@ -48,14 +49,15 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :zipcode)
-      params.require(:interest_answer).permit!
+      params.require(:user).permit(:name, :email, :password, :password_confirmation,
+                                   :zipcode, :interest_answers, 
+                                   interest_answers_attributes: [:user_id, :interest_rating])
     end
 
     def score_all_feeds(user)
       Feed.find_each(batch_size: 100) do |feed|
         unless feed_score = FeedScore.find_by(feed_id: feed.id, user_id: user.id)
-          feed_score = FeedScore.new(feed: feed, user: user)
+          feed_score = FeedScore.create(feed: feed, user: user)
         end
 
         total_rating = 0
@@ -69,6 +71,9 @@ class UsersController < ApplicationController
         feed_score.score = total_rating.to_f / rating_count.to_f
       end
     end
+
+    # def update_feed_scores(user) # override ALL feed scores, not just the ones that don't yet exist
+    # end
 
     def get_user_articles
       user = current_user

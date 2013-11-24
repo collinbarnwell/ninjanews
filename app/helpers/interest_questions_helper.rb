@@ -1,0 +1,2 @@
+module InterestQuestionsHelper
+end

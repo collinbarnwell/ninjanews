@@ -1,0 +1,6 @@
+-if current_user.is_admin
+  -provide :title, 'New Interest Question'
+  %h1 New Interest Question
+  =render 'form'
+-else
+  %h1 ACCESS DENIED

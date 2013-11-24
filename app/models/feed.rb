@@ -13,7 +13,15 @@
 #
 
 class Feed < ActiveRecord::Base
+  validates :source, presence: true
+  validates :section, presence: true
+  validates :url, presence: true, uniqueness: true
+
+  belongs_to :source
+  has_many :relation_levels, dependent: :destroy
   has_many :interest_questions, through: :relation_levels
   has_many :articles
-  has_many :feed_scores
+  has_many :feed_scores, dependent: :destroy
+
+  accepts_nested_attributes_for :relation_levels
 end

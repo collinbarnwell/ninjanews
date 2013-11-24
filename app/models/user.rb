@@ -28,10 +28,10 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 }
   validates :zipcode, numericality: { only_integer: true }, inclusion: { in: 1000..99999 }
 
-  has_many :interest_answers
-  has_many :article_reads
+  has_many :interest_answers, dependent: :destroy
+  has_many :article_reads, dependent: :destroy
   has_many :articles, through: :article_reads
-  has_many :feed_scores
+  has_many :feed_scores, dependent: :destroy
 
   accepts_nested_attributes_for :interest_answers
 

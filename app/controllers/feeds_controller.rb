@@ -3,12 +3,13 @@ class FeedsController < ApplicationController
     if current_user.is_admin
       @feed = Feed.new
       @sources = Source.all
+      @interest_questions = InterestQuestion.all
     end
   end
 
   def create
     if current_user.is_admin
-      @feed = Feed.find(params[:feed])
+      @feed = Feed.new(feed_params)
       if @feed.save
         redirect_to '/feeds', notice: 'Feed created.'
       else
@@ -19,14 +20,15 @@ class FeedsController < ApplicationController
 
   def edit
     if current_user.is_admin
-      @feed = Feed.find(params[:feed])
+      @feed = Feed.find(params[:id])
       @sources = Source.all
+      @interest_questions = InterestQuestion.all
     end
   end
 
   def update
     if current_user.is_admin
-      @feed = Feed.find(params[:feed])
+      @feed = Feed.find(params[:id])
       if @feed.update_attibutes(feed_params)
         redirect_to :back, notice: 'Feed updated.'
       else
@@ -37,7 +39,8 @@ class FeedsController < ApplicationController
 
   def destroy
     if current_user.is_admin
-      Feed.find(params[:feed]).destroy
+      Feed.find(params[:id]).destroy
+      redirect_to feeds_path, notice: 'Feed destroyed.'
     end
   end
 

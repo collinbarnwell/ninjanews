@@ -5,7 +5,7 @@
         %h2
           =pluralize(@source.errors.count, 'error')
         %ul
-          =@source.errors.full_messages.each do |msg|
+          -@source.errors.full_messages.each do |msg|
             %li=msg
 
     =f.inputs do

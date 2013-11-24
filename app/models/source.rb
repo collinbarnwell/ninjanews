@@ -12,7 +12,8 @@
 #
 
 class Source < ActiveRecord::Base
-  validates :name, :url, presence: true
+  validates :title, :url, presence: true
+  validates :url, uniqueness: true
 
   has_many :feeds
   has_many :articles, through: :feeds
