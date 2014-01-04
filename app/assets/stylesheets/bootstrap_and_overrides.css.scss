@@ -1,3 +1,184 @@
 @import "bootstrap";
-body { padding-top: 60px; }
 @import "bootstrap-responsive";
+
+$yes-tag:#99FF99;
+$primary:#E0E0DF;
+$secondary:#F3F3F2;
+$tertiary:#871919;
+$tertiary-shadow:#B14D4D;
+$background:white;
+
+.tag {
+  margin:3px;
+  float:left;
+  padding:1px;
+  &:hover {
+    border:solid;
+    border-width:1px;
+    padding:0px;
+  }
+}
+
+.unsubscribed {
+  background:$background;
+}
+.subscribed {
+  background:$yes-tag;
+}
+
+.article {
+  background:$tertiary;
+  border:solid;
+  padding:5px;
+  margin:3px;
+  width:300px;
+  float:left;
+  &:hover {
+    border-color:$background;
+    a {
+      color:$background;
+      text-decoration:none;
+    }
+  }
+  &:visited {
+    text-decoration:none;
+  }
+  a {
+    &:visited {
+      color:$background;
+      text-decoration:none;
+    }
+  }
+  small {
+    color:black;
+  }
+}
+
+.column {
+  float:left;
+  width:320px;
+}
+
+ul {
+  list-style-type:none;
+}
+
+ol {
+  list-style-type:none;
+}
+
+body {
+  padding-top:60px;
+  background:$background;
+  font-family:sans-serif;
+  font-weight:normal;
+  color:black;
+}
+
+a {
+  color:$background;
+}
+
+header {
+  background:$tertiary;
+  border:solid;
+  border-width:1px;
+  border-color:$tertiary-shadow;
+}
+
+.navbar .nav > li > a {
+  font-size:20px;
+  color:$background;
+  text-shadow:none;
+  font-size:16px;
+  font-weight:bold;
+  font-family:courier,serif;
+  margin-left:2px;
+  margin-right:2px;
+  &:visited {
+    color:white;
+  }
+  &:hover {
+    color:white;
+    background:$tertiary-shadow;
+  }
+}
+
+input {
+  border:none;
+  background:inherit;
+}
+
+.admin-text {
+  a {
+    color:black;
+  }
+}
+
+.auth {
+  background:$secondary;
+  position:fixed;
+  margin-left:-300px;
+  left:50%;
+  top:25%;
+  padding:30px;
+  float:false;
+  border:solid;
+  width:300px;
+  border-width:2px;
+  a {
+    color:$tertiary;
+    &:hover {
+      color:black;
+    }
+  }
+  .btn {
+    position:relative;
+    left:100px;
+  }
+  label, p, input {
+    position:relative;
+    left:35px;
+    margin-top: 10px;
+  }
+}
+
+#signup {
+  top:200px;
+  width:450px;
+  label {
+    float:false;
+  }
+}
+
+.btn {
+  font-family:courier,serif;
+  font-weight:bold;
+  color:white;
+  &:hover {
+    background:black;
+  }
+  &:visited {
+    background:$tertiary;
+  }
+  background:$tertiary;
+}
+
+.left-center {
+  top:30px;
+  position:relative;
+  left:20%;
+}
+
+.label {
+  font-family:sans-serif;
+  font-weight:normal;
+  border:none;
+  background:$secondary;
+  color:black;
+  clear:both;
+}
+
+h1 {
+  font-family:courier,serif;
+}

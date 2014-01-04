@@ -38,4 +38,8 @@ Ninjanews::Application.configure do
   config.assets.debug = true
 
   config.eager_load = false
+
+  ENV['CALAIS_KEY'] = 'xfd7kqxry6nrtf4kyxhhp72p'
+  ENV['FB_KEY'] = '498242056960351'
+  ENV['FB_SECRET'] = '39a139c71c2020c031c0f09081f4837d'
 end

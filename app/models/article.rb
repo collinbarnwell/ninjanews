@@ -14,12 +14,16 @@
 
 class Article < ActiveRecord::Base
   belongs_to :feed
-  has_many :article_reads
+  has_many :article_scores, dependent: :destroy
+  has_many :article_reads, dependent: :destroy
   has_many :users, through: :article_reads
+  has_and_belongs_to_many :tags
 
   validates :content, presence: true, uniqueness: true
   validates :title, presence: true
   validates :url, presence: true
+
+  mount_uploader :image, ArticleImageUploader
 
   scope :not_read_by, ->(user) do
     where('id NOT IN (?)', user.articles)

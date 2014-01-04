@@ -1,10 +1,10 @@
 -if current_user.is_admin
   -provide :title, 'All Interest Questions'
   %h1 All Interest Questions
-  %p= link_to 'New Interest Question', new_interest_question_path
+  %p.admin-text= link_to 'New Interest Question', new_interest_question_path
   %ul
     -@interest_questions.each do |iq|
-      %li
+      %li.admin-text
         =link_to iq.question_text, edit_interest_question_path(iq)
         ='----'
         =link_to 'Delete', interest_question_path(iq), method: 'delete'

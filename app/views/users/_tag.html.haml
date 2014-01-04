@@ -1,0 +1,9 @@
+-if current_user.tags.include?(tag.id)
+  .tag.subscribed
+    -form_for(current_user.tags.find_by(tag_id: tag.id), remote: true, html: { method: :delete }) do |f|
+      =f.submit tag.title
+-else
+  .tag
+    -form_for(current_user.tags.build(tag_id: tag.id), remote: true) do |f|
+      -f.hidden_field :tag_id
+      =f.submit tag.title

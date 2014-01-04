@@ -1,4 +1,4 @@
-.form
+.auth#signup
   =semantic_form_for(@user) do |f|
     -if @user.errors.any?
       #error_explanation
@@ -16,12 +16,9 @@
       =f.input :password
       =f.input :password_confirmation
 
-      -@interest_questions.each do |q|
-        =f.semantic_fields_for :interest_answer do |ia|
-          =ia.input :interest_rating, label: q.question_text, as: :range, 
-                    max: 100, min: 0, default: 0
-          -ia.input :interest_question_id, as: :hidden, value: q.id
+      =f.inputs for: :interest_answers do |ia, i|
+        =ia.label @interest_questions.try { |iq| iq[i-1].question_text }
+        =ia.range_field :interest_rating, max: 100, min: 0
 
-    =f.actions do
-      =f.action :submit
-      =f.action :cancel
+        =ia.input :interest_question_id, as: :hidden, value: @interest_questions.try { |iq| iq[i-1].id }
+    =f.submit label: 'Get Started', class: 'btn btn-large btn-primary'

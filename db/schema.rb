@@ -11,11 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131116053706) do
+ActiveRecord::Schema.define(version: 20140104204051) do
 
   create_table "article_reads", force: true do |t|
     t.integer "user_id"
     t.integer "article_id"
+  end
+
+  create_table "article_scores", force: true do |t|
+    t.float    "score"
+    t.integer  "user_id"
+    t.integer  "article_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "articles", force: true do |t|
@@ -30,6 +38,11 @@ ActiveRecord::Schema.define(version: 20131116053706) do
 
   create_table "articles_newspapers", id: false, force: true do |t|
     t.integer "newspaper_id"
+    t.integer "article_id"
+  end
+
+  create_table "articles_tags", id: false, force: true do |t|
+    t.integer "tag_id"
     t.integer "article_id"
   end
 
@@ -89,6 +102,19 @@ ActiveRecord::Schema.define(version: 20131116053706) do
     t.datetime "updated_at"
   end
 
+  create_table "subscriptions", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "tag_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tags", force: true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "email"
@@ -101,6 +127,10 @@ ActiveRecord::Schema.define(version: 20131116053706) do
     t.datetime "updated_at"
     t.string   "remember_token"
     t.boolean  "is_admin",              default: false
+    t.integer  "uid"
+    t.datetime "oauth_expires_at"
+    t.string   "oauth_token"
+    t.string   "provider"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

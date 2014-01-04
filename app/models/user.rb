@@ -29,13 +29,28 @@ class User < ActiveRecord::Base
   validates :zipcode, numericality: { only_integer: true }, inclusion: { in: 1000..99999 }
 
   has_many :interest_answers, dependent: :destroy
+  has_many :interest_questions, through: :interest_answers
   has_many :article_reads, dependent: :destroy
   has_many :articles, through: :article_reads
   has_many :feed_scores, dependent: :destroy
+  has_many :article_scores, dependent: :destroy
+  has_many :subscriptions
+  has_many :tags, through: :subscriptions
 
   accepts_nested_attributes_for :interest_answers
 
   has_secure_password
+
+  def self.from_omniauth(auth)
+    where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user.name = auth.info.name
+      user.oauth_token = auth.credentials.token
+      user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      user.save!
+    end
+  end
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64

@@ -10,6 +10,6 @@
 
 class InterestQuestion < ActiveRecord::Base
   validates :question_text, presence: true
-  has_many :feeds, through: :relation_levels
+  has_many :relation_levels, dependent: :destroy
   has_many :interest_answers, dependent: :destroy
 end

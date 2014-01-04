@@ -30,6 +30,11 @@ gem 'jquery-rails'
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.1'
 
+# Facebook
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'koala'
+
 group :development do
   gem 'annotate', '2.4.0' # annotate --position before
 end
@@ -41,6 +46,10 @@ group :test do
   gem 'capybara', '2.0.3'
   gem 'launchy'
 end
+
+gem 'nokogiri', require: false
+gem 'rmagick'
+gem 'carrierwave'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

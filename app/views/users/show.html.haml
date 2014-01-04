@@ -1,5 +1,13 @@
 - provide(:title, 'News')
 
-%h1= @user.name.titleize
-%h3 News
-%ul= render @articles
+.container
+  .column
+    -@articles.to_enum.with_index(3) do |a, i|
+      =render a if i%3 == 0
+  .column
+    -@articles.to_enum.with_index(2) do |a, i|
+      =render a if i%3 == 0
+  .column
+    -@articles.to_enum.with_index(1) do |a, i|
+      =render a if i%3 == 0
+

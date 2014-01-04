@@ -1,9 +1,10 @@
 Ninjanews::Application.routes.draw do
   
-  root to: 'static_pages#home'
+  root to: 'staticpages#home'
 
   resources :users, except: :new
   resources :sessions, only: [:create, :destroy]
+  resources :subscriptions, only: [:create, :destroy]
 
   get '/signup', to: 'users#new'
   get '/signin', to: 'sessions#new'

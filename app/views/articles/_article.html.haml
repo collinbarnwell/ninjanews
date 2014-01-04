@@ -1,4 +1,15 @@
-%li
-  %a.article{href: article.url}
+.article
+  %a{href: article.url}
     %h4= article.title
     %p= article.content
+    =image_tag(article.image)
+    %p
+      %small= "From the #{article.feed.section} section of #{article.feed.source.title}"
+    .tags
+      -article.tags.each do |tag|
+        -if current_user.tags.include? tag
+          =form_for(current_user.subscriptions.find_by(tag_id: tag.id), remote: true, html: { method: :delete }) do |f|
+            .tag.subscribed=f.submit tag.title
+        -else
+          =form_for(current_user.subscriptions.build(tag_id: tag.id), remote: true) do |f|
+            .tag.unsubscribed=f.submit tag.title

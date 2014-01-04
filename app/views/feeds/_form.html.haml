@@ -1,4 +1,4 @@
-.form
+.form.admin-text.container
   =semantic_form_for(@feed) do |f|
     -if @feed.errors.any?
       #error_explaination
@@ -9,18 +9,14 @@
             %li=msg
             
     =f.inputs do
-      =f.input :url
-      =f.input :source_id, as: :select, collection: @sources, include_blank: true, label_method: :title
-      =f.input :section
-      =f.input :area_importance
-      =f.input :is_local_news
+      =f.inputs :url, :section, :is_local_news, :area_importance
 
-      -@interest_questions.each do |iq|
-        =f.semantic_fields_for :relation_level do |rl|
-          =rl.input :score, label: iq.question_text, as: :range, 
-                    max: 100, min: 0, default: 0
-          -rl.input :interest_question_id, as: :hidden, value: iq.id
+      =f.collection_select :source_id, @sources, :id, :title
 
-    =f.actions do
-      =f.action :submit
-      =f.action :cancel
+      =f.inputs for: :relation_levels do |rl, i|
+        =rl.label @interest_questions[i-1].question_text
+        =rl.range_field :score, max: 100, min: 0
+
+        =rl.hidden_field :interest_question_id, value: @interest_questions[i-1].id
+
+    =f.submit class: 'btn btn-large btn-primary'
