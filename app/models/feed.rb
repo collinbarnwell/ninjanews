@@ -20,7 +20,7 @@ class Feed < ActiveRecord::Base
   belongs_to :source
   has_many :relation_levels, dependent: :destroy
   has_many :interest_questions, through: :relation_levels
-  has_many :articles
+  has_many :articles, dependent: :destroy
   has_many :feed_scores, dependent: :destroy
 
   accepts_nested_attributes_for :relation_levels

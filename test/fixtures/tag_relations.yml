@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  score: 1.5
+  tag_1_id: 1
+  tag_2_id: 1
+
+two:
+  score: 1.5
+  tag_1_id: 1
+  tag_2_id: 1

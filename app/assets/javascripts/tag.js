@@ -1,9 +1,9 @@
 $(document).ready( function() { 
   $('.tag').click( function() {
-    debugger;
-    var text = $(this).text();
+
+    var value = $(this).find('input').val();
     $('.tag').filter( function(index) {
-      return $(this).text() === text;
+      return $(this).find('input').val() == value;
     }).toggleClass('unsubscribed subscribed');
   });
 });

@@ -26,6 +26,7 @@ gem 'sass-rails',   '~> 4.0.0.rc2'
   gem 'uglifier', '>= 1.3.0'
 
 gem 'jquery-rails'
+gem 'coffee-script'
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.1'
@@ -33,7 +34,8 @@ gem 'bcrypt-ruby', '~> 3.0.1'
 # Facebook
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'koala'
+gem 'social-share-button'
+# gem 'koala'
 
 group :development do
   gem 'annotate', '2.4.0' # annotate --position before

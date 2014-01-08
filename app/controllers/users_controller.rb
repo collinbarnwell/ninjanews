@@ -17,14 +17,6 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  def new
-    @user = User.new
-    @interest_questions = InterestQuestion.all
-    InterestQuestion.all.each do |iq|
-      @user.interest_answers.find_or_initialize_by(interest_question_id: iq.id)
-    end
-  end
-
   def edit
     unless @user = current_user
       redirect_to signin_path
@@ -35,27 +27,14 @@ class UsersController < ApplicationController
       @user.interest_answers.find_or_initialize_by(interest_question_id: iq.id)
     end
   end
-
-  def create
-    @user = User.new(user_params)
-    @user.name.downcase!
-    @user.email.downcase!
-    if @user.save
-      sign_in_ @user
-      update_feed_scores!(@user)
-      redirect_to @user, notice: 'Welcome!'
-    else
-      render action: 'new'
-    end
-  end
-
+  
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       update_feed_scores!(@user)
       redirect_to @user, notice: 'User updated.'
     else
-      render action: 'edit' 
+      render action: 'edit'
     end
   end
 

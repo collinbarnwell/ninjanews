@@ -9,16 +9,11 @@
             %li= msg
 
     =f.inputs do
-      =f.input :name
       =f.input :email
-      =f.input :zipcode, as: :string, hint: I18n.t('forms.zipcode_hint')
-
-      =f.input :password
-      =f.input :password_confirmation
 
       =f.inputs for: :interest_answers do |ia, i|
         =ia.label @interest_questions.try { |iq| iq[i-1].question_text }
         =ia.range_field :interest_rating, max: 100, min: 0
 
         =ia.input :interest_question_id, as: :hidden, value: @interest_questions.try { |iq| iq[i-1].id }
-    =f.submit label: 'Get Started', class: 'btn btn-large btn-primary'
+    =f.submit label: 'Done', class: 'btn btn-large btn-primary'

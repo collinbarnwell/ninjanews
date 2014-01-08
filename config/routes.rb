@@ -1,17 +1,18 @@
 Ninjanews::Application.routes.draw do
   
-  root to: 'staticpages#home'
+  root to: 'static_pages#home'
 
-  resources :users, except: :new
+  resources :users, except: [:new, :create]
   resources :sessions, only: [:create, :destroy]
   resources :subscriptions, only: [:create, :destroy]
+  
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
 
-  get '/signup', to: 'users#new'
   get '/signin', to: 'sessions#new'
   delete '/signout', to: 'sessions#destroy'
-
-  # admin only
   
+  # admin only
   resources :feeds, :sources, :interest_questions
   # note: should remove :show action
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140104204051) do
+ActiveRecord::Schema.define(version: 20140108040944) do
 
   create_table "article_reads", force: true do |t|
     t.integer "user_id"
@@ -109,6 +109,14 @@ ActiveRecord::Schema.define(version: 20140104204051) do
     t.datetime "updated_at"
   end
 
+  create_table "tag_relations", force: true do |t|
+    t.float    "score"
+    t.integer  "tag_1_id"
+    t.integer  "tag_2_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tags", force: true do |t|
     t.string   "title"
     t.datetime "created_at"
@@ -118,15 +126,10 @@ ActiveRecord::Schema.define(version: 20140104204051) do
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "email"
-    t.integer  "zipcode"
     t.string   "area"
-    t.string   "password"
-    t.string   "password_confirmation"
-    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "remember_token"
-    t.boolean  "is_admin",              default: false
+    t.boolean  "is_admin",         default: false
     t.integer  "uid"
     t.datetime "oauth_expires_at"
     t.string   "oauth_token"
@@ -134,6 +137,5 @@ ActiveRecord::Schema.define(version: 20140104204051) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
 
 end

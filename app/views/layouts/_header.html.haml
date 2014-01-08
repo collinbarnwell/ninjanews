@@ -2,9 +2,9 @@
   .container
     %ul.nav.pull-left
       %span.glyphicon.glyphicon-registration-mark
-      %li= link_to 'Red Pill Reader', root_path
+      %li= link_to 'Red Pill Reader', '#'
     %ul.nav.pull-right
-      -if signed_in?
+      -if current_user
         %li= link_to current_user.name.titleize, user_path(current_user)
         %li=link_to 'Settings', edit_user_path(current_user)
         %li= link_to 'Sign out', signout_path, method: 'delete'
@@ -12,4 +12,3 @@
           =render 'layouts/admin_toolbar'
       -else
         %li= link_to 'Sign in', signin_path
-        %li= link_to 'Sign up', signup_path

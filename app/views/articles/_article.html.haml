@@ -13,3 +13,4 @@
         -else
           =form_for(current_user.subscriptions.build(tag_id: tag.id), remote: true) do |f|
             .tag.unsubscribed=f.submit tag.title
+    .social= social_share_button_tag("#{article.title} (RedPillReader.com)", url: article.url)

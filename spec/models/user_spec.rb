@@ -2,18 +2,17 @@
 #
 # Table name: users
 #
-#  id                    :integer         not null, primary key
-#  name                  :string(255)
-#  email                 :string(255)
-#  zipcode               :integer
-#  area                  :string(255)
-#  password              :string(255)
-#  password_confirmation :string(255)
-#  password_digest       :string(255)
-#  created_at            :datetime
-#  updated_at            :datetime
-#  remember_token        :string(255)
-#  is_admin              :boolean         default(FALSE)
+#  id               :integer         not null, primary key
+#  name             :string(255)
+#  email            :string(255)
+#  area             :string(255)
+#  created_at       :datetime
+#  updated_at       :datetime
+#  is_admin         :boolean         default(FALSE)
+#  uid              :integer
+#  oauth_expires_at :datetime
+#  oauth_token      :string(255)
+#  provider         :string(255)
 #
 
 require 'spec_helper'
